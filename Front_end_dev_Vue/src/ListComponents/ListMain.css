@@ -1,0 +1,106 @@
+#ListMain {
+  position: fixed;
+  top: 112px;
+  right: 0;
+  bottom: 65px;
+  left: 0;
+  overflow: auto;
+  transition: all ease-in 0.5s;
+}
+
+#ListMain.isMobile {
+  top: 0 !important;
+  bottom: 0 !important;
+}
+
+/*BS栅格*/
+.col {
+  text-align: center;
+  margin: auto;
+}
+
+#ListMain .badge-index {
+  background-color: #42b983;
+}
+
+/*switch*/
+#ListMain  .custom-control-label::before {
+  border: 0;
+  background-color: #dcdfe6;
+}
+
+#ListMain  .custom-control-label::after {
+  border: 0;
+  background-color: #fff;
+}
+
+#ListMain  .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 0.2rem rgba(66, 185, 131, 0.25);
+}
+
+#ListMain  .custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  background-color: #42b983;
+}
+
+#ListMain  .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  color: #fff;
+  background-color: rgba(66, 185, 131, 0.5);
+  border-color: rgba(66, 185, 131, 0.5);
+}
+
+#count-isLike span {
+  font-size: 0.8rem;
+  color: #757575;
+}
+
+#toTop {
+  font-size: 48px;
+  position: fixed;
+  right: 11px;
+  bottom: 70px;
+  z-index: 999;
+  border-radius: 12px;
+  color: rgba(66, 185, 131, 0.25);
+  text-shadow: 0 0 0 0.2rem rgba(66, 185, 131, 0.25);
+  transition: bottom ease-in 0.5s, color ease-in 0.5s;
+}
+
+#toTop.isMobile {
+  transition: bottom ease-in 0.5s, color ease-in 0.08s !important;
+}
+
+#toTop.isMobile.notShow {
+  bottom: 10px !important;
+}
+
+#toTop:not(.isMobile):hover {
+  color: #42b983;
+  animation: swing .4s infinite linear both;
+}
+
+#toTop.isMobile:active {
+  color: #42b983;
+}
+
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}

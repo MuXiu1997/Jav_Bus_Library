@@ -1,0 +1,30 @@
+#ListFooter {
+  padding: 16px;
+  width: 100%;
+  border-top: #42b983 1px solid;
+  font-size: 16px;
+  position: fixed;
+  z-index: 100000;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+}
+
+#ListFooter /deep/ .el-pagination li, #ListFooter /deep/ .el-pagination button {
+  color: #42b983;
+  border-radius: 4px;
+}
+
+#ListFooter /deep/ .el-pagination li:hover {
+  box-shadow: inset 0 0 0 0.2rem rgba(66, 185, 131, 0.25) !important;
+}
+
+#ListFooter /deep/ .el-pagination button:hover {
+  color: #42b983 !important;
+  box-shadow: inset 0 0 0 0.2rem rgba(66, 185, 131, 0.25) !important;
+}
+
+#ListFooter /deep/ .el-pagination ul > .active {
+  background: #42b983;
+  color: #fff;
+}

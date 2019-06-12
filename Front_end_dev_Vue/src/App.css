@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden !important;
+}
+
+.scrollStyle::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollStyle::-webkit-scrollbar-button, .scrollStyle::-webkit-scrollbar-track {
+  display: none;
+}
+
+.scrollStyle::-webkit-scrollbar-button {
+  display: none;
+}
+
+.scrollStyle::-webkit-scrollbar-track-piece {
+  background: rgba(140, 140, 140, 0.25);
+}
+
+.scrollStyle::-webkit-scrollbar-thumb {
+  background: rgba(66, 185, 131, 0.5);
+  border-radius: 4px;
+}

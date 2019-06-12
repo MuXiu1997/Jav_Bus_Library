@@ -1,0 +1,54 @@
+#magnetTable /deep/ .col1 {
+  width: 60%;
+}
+
+#magnetTable /deep/ .col2, #magnetTable /deep/ .col3 {
+  width: 20%;
+}
+
+#magnetTable {
+  background-color: #fff;
+  margin-bottom: 0;
+  color: #42b983;
+}
+
+#accordion /deep/ .table-hover tbody tr:hover {
+  color: #fff !important;
+  background-color: #42b983 !important;
+}
+
+#back {
+  font-size: 48px;
+  position: fixed;
+  right: 11px;
+  bottom: 5px;
+  z-index: 999;
+  border-radius: 12px;
+  color: rgba(66, 185, 131, 0.25);
+  text-shadow: 0 0 0 0.2rem rgba(66, 185, 131, 0.25);
+  -webkit-transform: rotate(-90deg);
+}
+
+#back:hover {
+  color: #42b983;
+}
+
+#title {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px 30px;
+  border-bottom: 1px #42b983 solid;
+  z-index: 999;
+}
+
+#accordion {
+  position: fixed;
+  top: 45px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  overflow: auto;
+}

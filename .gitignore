@@ -1,0 +1,24 @@
+.DS_Store
+node_modules
+/dist
+/images
+__pycache__
+Jav_Bus.db
+
+# local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# venv
+venv_Flask
+venv_Scrapy
+
