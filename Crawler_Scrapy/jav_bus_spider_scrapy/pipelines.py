@@ -60,17 +60,12 @@ class JavSpiderByScrapyImagesPipeline(ImagesPipeline):
         return request_objs
 
     def file_path(self, request, response=None, info=None):
-        # path = super().file_path(request, response, info)
         designation = request.item.get('designation')
-        # images_store = settings.IMAGES_STORE
-        # designation_path = os.path.join(images_store, designation)
-        designation_path = designation
-        if not os.path.exists(designation_path):
-            os.mkdir(designation_path)
+        designation_dir = designation  # 使用番号作为目录名
         if 'cover' in request.url:
             image_name = ''.join((designation, '.jpg'))
         else:
             image_name = request.url.split('/')[-1]
 
-        image_path = os.path.join(designation_path, image_name)
+        image_path = os.path.join(designation_dir, image_name)
         return image_path
