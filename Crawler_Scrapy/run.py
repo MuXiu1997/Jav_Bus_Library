@@ -29,6 +29,7 @@ STAR_START_URLS = [
     'https://www.dmmsee.men/star/b64',  # 鈴村あいり
     'https://www.dmmsee.men/star/2mx',  # Rio（柚木ティナ）
     'https://www.dmmsee.men/star/mk0',  # 桃谷エリカ
+    'https://www.dmmsee.men/star/2xi',  # 葵つかさ
 ]
 
 TEST_START_URLS = ['https://www.seedmm.co/VEC-357']
