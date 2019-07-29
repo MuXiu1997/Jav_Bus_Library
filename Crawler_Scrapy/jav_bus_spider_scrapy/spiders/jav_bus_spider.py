@@ -32,7 +32,7 @@ class JavBusSpiderSpider(CrawlSpider):
         # 番号
         designation = response.xpath("//div[@class='col-md-3 info']/p[1]/span[2]/text()").get()
         # 番名
-        designation_title = response.xpath("//a[@class='bigImage']/img/@title").get()
+        designation_title = response.xpath("//a[@class='bigImage']/img/@title").get().strip()
         # 上市时间
         publish_time = response.xpath("//div[@class='col-md-3 info']/p[2]/text()").get()
         # 演出者
