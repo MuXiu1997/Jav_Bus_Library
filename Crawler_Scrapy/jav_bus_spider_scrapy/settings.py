@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import run
 
 # Scrapy settings for jav_spider_by_scrapy project
 #
@@ -27,7 +26,7 @@ ROBOTSTXT_OBEY = False  # 该选项会让爬虫找不到机器人协议就不工
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = run.DELAY
+DOWNLOAD_DELAY = 0
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
@@ -54,9 +53,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-    'jav_bus_spider_scrapy.middlewares.JavSpiderByScrapyDownloaderMiddleware': 543,
-}
+# DOWNLOADER_MIDDLEWARES = {
+#     'jav_bus_spider_scrapy.middlewares.JavSpiderByScrapyDownloaderMiddleware': 543,
+# }
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -92,4 +91,28 @@ ITEM_PIPELINES = {
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-IMAGES_STORE = run.IMAGES_STORE
+# redis
+REDIS_HOST = '172.17.0.1'
+
+REDIS_PORT = 6379
+
+REDIS_DB = 0
+
+IMAGES_STORE = '/images/'
+
+# run
+STAR_LIST = [
+    'r62',  # 桜空もも
+    'okq',  # 三上悠亜
+    'pmv',  # 橋本ありな
+    '1ny',  # 明日花キララ
+    'n5q',  # 天使もえ
+    'b64',  # 鈴村あいり
+    '2mx',  # Rio（柚木ティナ）
+    'mk0',  # 桃谷エリカ
+    '2xi',  # 葵つかさ
+]
+
+ALLOWED_DOMAINS = 'cdnbus.men'
+
+API_URL = 'https://www.{host}/ajax/uncledatoolsbyajax.php?gid={gid}&lang=zh&img={img}&uc={uc}&floor={floor}'

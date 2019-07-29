@@ -20,6 +20,4 @@ class JavSpiderByScrapyItem(scrapy.Item):
     publish_time = scrapy.Field()
     star_name = scrapy.Field()
     magnet_infos = scrapy.Field()
-    sample_count = scrapy.Field()
-    magnet_count = scrapy.Field()
-    url_list = scrapy.Field()
+    sample_list = scrapy.Field()
