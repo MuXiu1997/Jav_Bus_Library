@@ -10,9 +10,8 @@ docker run -d -p 6379:6379 --name JBL_redis\
  redis:5.0.5 redis-server /usr/local/etc/redis/redis.conf
 
 docker run -d -p 5000:5000 --name JBL_uwsgi_flask\
- -v /JBL/Back_end_Flask/run.py:/app/run.py\
- -v /JBL/Models_SQLAlchemy/models.py:/app/models.py\
- -v /JBL/Models_SQLAlchemy/Jav_Bus.db:/app/Jav_Bus.db\
+ -v /JBL/Back_end_Flask/manage.py:/app/manage.py\
+ -v /JBL/Back_end_Flask/app:/app/app\
  -v /JBL/Config/uwsgi.ini:/app/uwsgi.ini\
  jbl_uwsgi_flask:latest
 
