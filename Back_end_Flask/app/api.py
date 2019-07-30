@@ -2,8 +2,8 @@ from flask import Blueprint, jsonify, Response, request
 from redis import ConnectionPool, Redis
 
 api = Blueprint('api', __name__)
-# redis_pool = ConnectionPool(host='172.17.0.1', port=6379, db=0, decode_responses=True)
-redis_pool = ConnectionPool(host='192.168.217.132', port=6379, db=0, decode_responses=True)
+redis_pool = ConnectionPool(host='172.17.0.1', port=6379, db=0, decode_responses=True)
+# redis_pool = ConnectionPool(host='192.168.217.132', port=6379, db=0, decode_responses=True)
 
 
 @api.route('/api/videos/')  # list页数据
