@@ -1,7 +1,6 @@
 <template>
   <div ref="ListFooter"
-       id="ListFooter"
-  >
+       id="ListFooter">
     <div style="width: 100%">
       <b-row style="width: 100%">
         <b-col>
@@ -11,9 +10,8 @@
             :page-size="50"
             :layout="parameter.layout"
             :pager-count="parameter.count"
-            :total="tableDataLength"
-            style="margin: 0 auto;text-align: center"
-          >
+            :total="total"
+            style="margin: 0 auto;text-align: center">
           </el-pagination>
         </b-col>
       </b-row>
@@ -26,7 +24,10 @@
 import { Pagination } from 'element-ui'
 export default {
   components: { 'el-pagination': Pagination },
-  props: ['currentPage', 'tableDataLength'],
+  props: {
+    currentPage: {},
+    total: {}
+  },
   name: 'ListFooter',
   computed: {
     parameter () {

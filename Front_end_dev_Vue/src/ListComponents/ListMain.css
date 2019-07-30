@@ -24,26 +24,26 @@
 }
 
 /*switch*/
-#ListMain  .custom-control-label::before {
+#ListMain .custom-control-label::before {
   border: 0;
   background-color: #dcdfe6;
 }
 
-#ListMain  .custom-control-label::after {
+#ListMain .custom-control-label::after {
   border: 0;
   background-color: #fff;
 }
 
-#ListMain  .custom-control-input:focus ~ .custom-control-label::before {
+#ListMain .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: 0 0 0 0.2rem rgba(66, 185, 131, 0.25);
 }
 
-#ListMain  .custom-control-input:checked ~ .custom-control-label::before {
+#ListMain .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
   background-color: #42b983;
 }
 
-#ListMain  .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+#ListMain .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
   color: #fff;
   background-color: rgba(66, 185, 131, 0.5);
   border-color: rgba(66, 185, 131, 0.5);
@@ -103,4 +103,13 @@
   to {
     transform: rotate3d(0, 0, 1, 0deg);
   }
+}
+
+.cover {
+  background-color: rgba(0, 0, 0, 0);
+  color: #42b983;
+  line-height: 400px;
+  height: 100px;
+  width: 100%;
+  text-align: center
 }

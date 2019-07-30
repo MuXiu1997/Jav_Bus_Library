@@ -47,26 +47,6 @@ class JavBusSpiderSpider(CrawlSpider):
 
         yield item
 
-        # script = response.xpath("//body/script/text()").getall()
-        # # 遍历得到的列表
-        # gid, img, uc, meta = None, None, None, None
-        # for each_script in script:
-        #     # 如果三个词都在某个标签体中
-        #     if "gid" in each_script and "img" in each_script and "uc" in each_script:
-        #         # 提取有效信息
-        #         gid = re.search(r'gid = (\S+);', each_script).group(1)
-        #         img = re.search(r"img = '(\S+)';", each_script).group(1)
-        #         uc = re.search(r'uc = (\S+);', each_script).group(1)
-        #         # 返回有效信息组成的字典
-        #         meta = {
-        #             'designation': designation,
-        #             'designation_title': designation_title,
-        #             'publish_time': publish_time,
-        #             'star_name': star_name,
-        #             'sample_count': len(sample_waterfall),
-        #             'sample_list': sample_list
-        #         }
-        #         break
         gid, uc, img = re.search(
             r'<script>\s+?var gid = (.*?);\s+?var uc = (.*?);\s+?var img = \'(.*?)\';\s+?</script>',
             response.text

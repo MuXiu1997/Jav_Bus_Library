@@ -3,42 +3,74 @@
     <transition name="fadeOutUp">
       <v-header
         v-show="$store.state.isPC || show"
-        @fas-change="FASChange"
-        id="ListHeader"
-      />
+        @filter-change="filterChange"
+        id="ListHeader"/>
     </transition>
     <!--=============================================================================================================-->
     <v-main
-      :tableData="tableData"
+      :videosData="videosDataSliced"
       :show="show"
-      id="ListMain"
-    />
+      id="ListMain"/>
     <!--=============================================================================================================-->
+    <!--toTop-->
     <span
       id="showHF"
-      :class="{'hide':$store.state.isPC,'icon iconfont toTop':true}"
-      @click="show=!show"
-    >
+      class="icon iconfont toTop"
+      v-show="!$store.state.isPC"
+      @click="show=!show">
     </span>
     <!--=============================================================================================================-->
     <transition name="fadeOutDown">
       <v-footer
         :currentPage="currentPage"
-        :tableDataLength="tableDataLength"
+        :total="videosData.length"
         @current-change="currentChange"
-        v-show="$store.state.isPC || show"
-      />
+        v-show="$store.state.isPC || show"/>
     </transition>
   </div>
 
 </template>
 
 <script>
+import ListHeader from '../ListComponents/ListHeader.vue'
+import ListMain from '../ListComponents/ListMain.vue'
+import ListFooter from '../ListComponents/ListFooter.vue'
+
+function manyIncludes (input, search) {
+  if (!search) {
+    return true
+  }
+  input = input.toLowerCase()
+  search = search.toLowerCase()
+  let keywords = search.split(' ')
+  let result = true
+  for (let keyword of keywords) {
+    result = result && input.includes(keyword)
+  }
+  return result
+}
+
+function videoSort (thisOne, otherOne) {
+  if (thisOne.pt > otherOne.pt) {
+    return -1
+  } else if (thisOne.pt < otherOne.pt) {
+    return 1
+  } else {
+    if (thisOne.d > otherOne.d) {
+      return 1
+    } else if (thisOne.d < otherOne.d) {
+      return -1
+    } else {
+      return 0
+    }
+  }
+}
+// noinspection JSUnusedGlobalSymbols
 export default {
   components: {
-    'v-header': () => import(/* webpackChunkName: "List" */'../ListComponents/ListHeader.vue'),
-    'v-main': () => import(/* webpackChunkName: "List" */'../ListComponents/ListMain.vue'),
-    'v-footer': () => import(/* webpackChunkName: "List" */'../ListComponents/ListFooter.vue')
+    'v-header': ListHeader,
+    'v-main': ListMain,
+    'v-footer': ListFooter
   },
   name: 'List',
   data () {
@@ -46,7 +78,7 @@ export default {
       show: false,
       keepScrollTop: 0,
 
-      FAS: {
+      filter: {
         designation: '',
         starName: '',
         isLike: ''
@@ -54,50 +86,57 @@ export default {
 
       tableDataLength: null,
       currentPage: 1,
-      tableData: [
+      initVideosData: [
         {
-          cover: null,
-          designation: null,
-          designationTitle: null,
-          starName: null,
-          publishTime: null,
-          sampleCount: null,
-          magnetCount: null,
-          isLike: null
+          d: null, // designation
+          dt: null, // designation_title
+          pt: null, // publish_time
+          sn: null, // star_name
+          mc: null, // magnet_count
+          sc: null, // sample_count
+          il: null // is_like
         }
       ]
     }
   },
   created () {
-    this.getTableData()
+    this.getVideos()
+  },
+  computed: {
+    videosData () {
+      this.initCurrentPage()
+      return this.initVideosData
+        .filter((video) => {
+          return manyIncludes(video.d, this.filter.designation)
+        })
+        .filter((video) => {
+          return manyIncludes(video.sn, this.filter.starName)
+        })
+        .filter((video) => {
+          return !this.filter.isLike || video.il === this.filter.isLike
+        })
+        .sort(videoSort)
+    },
+    videosDataSliced () {
+      return this.videosData
+        .slice((this.currentPage - 1) * 50, this.currentPage * 50)
+    }
+
   },
   methods: {
-    FASChange (obj) {
-      this.FAS = obj
-      this.getTableData()
+    filterChange (obj) {
+      this.filter = obj
     },
     currentChange (page) {
-      this.getTableData(page)
+      this.currentPage = page
     },
-    // switchIsLike (rowData) {
-    //   this.axios.patch('/api/PATCH/table-data/is-like', {
-    //     'designation': rowData.designation,
-    //     'isLike': !rowData.isLike
-    //   })
-    // },
-    getTableData (page) {
-      this.axios.get('/api/GET/table-data', {
-        params: {
-          designation: this.FAS['designation'],
-          starName: this.FAS['starName'],
-          isLike: this.FAS['isLike'],
-          currentPage: page || 1
-        }
-      })
+    initCurrentPage () {
+      this.currentPage = 1
+    },
+    getVideos () {
+      this.$axios.get(`/api/videos/`)
         .then(response => {
-          this.tableData = response.data['tableData']
-          this.tableDataLength = response.data['len']
-          this.currentPage = response.data['currentPage']
+          this.initVideosData = response.data
         })
     }
   }

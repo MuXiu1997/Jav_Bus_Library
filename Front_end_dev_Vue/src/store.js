@@ -15,7 +15,6 @@ export default new Vuex.Store({
   actions: {
     handleIsPC (context, isPC) {
       context.commit('handleIsPC', isPC)
-      console.log(123)
     }
   }
 })

@@ -3,52 +3,53 @@
     <div
       v-b-toggle.accordion="true"
       @click="show=!show"
-      id="title"
-    >
+      id="title">
       <span style="font-size: 16px;color: #42b983">磁 力 链 接 Magnet Links</span>
       <i class=" header-icon el-icon-paperclip" style="font-size: 16px;color: #42b983"></i>
     </div>
     <b-collapse
       id="accordion"
       ref="accordion"
-      class="scrollStyle"
-    >
+      class="scrollStyle">
       <b-table
         hover
-        :items="magnetTableData"
+        :items="magnets"
         :fields="fields"
         @row-dblclicked="magnetDblclick"
-        id="magnetTable"
-      >
+        id="magnetTable">
       </b-table>
     </b-collapse>
+
     <div
-      v-viewer="{url: 'data-large', navbar: false, movable: false, title: false, rotatable: false, scalable:false}"
       style="position: fixed;top: 45px;right: 0;bottom: 0;left: 0;overflow: auto;z-index: 1"
       class="scrollStyle"
-    >
+      ref="samples">
       <img
-        v-for="url in urlList"
-        :key="url"
+        v-for="sample in samples"
+        :key="sample"
         style="width: 50%;display: block;margin:20px auto;"
-        :src="url" alt="">
+        :src="`/images/${designation}/${sample}`"
+        alt=""/>
     </div>
     <span
       class="icon iconfont toTop"
       id="back"
-      @click="back"
-    >
+      @click="back">
     </span>
   </div>
 </template>
 
 <!--suppress JSUnusedGlobalSymbols -->
 <script>
+import Viewer from 'viewerjs'
 import 'viewerjs/dist/viewer.css'
-import 'v-viewer'
-
+import { BCollapse, BTable } from 'bootstrap-vue'
 export default {
-  name: 'Info',
+  name: 'Detail',
+  components: {
+    'b-collapse': BCollapse,
+    'b-table': BTable
+  },
   data () {
     return {
       show: true,
@@ -70,24 +71,45 @@ export default {
           tdClass: 'col3'
         }
       },
-      magnetTableData: [],
-      urlList: [],
-      designation: this.$route.params.id
+      magnets: [],
+      samples: [],
+      designation: this.$route.params.id,
+      viewer: null
     }
   },
   created () {
     this.getInfoData()
+    this.$nextTick(() => {
+      this.viewer = new Viewer(this.$refs['samples'], {
+        title: 0,
+        fullscreen: false,
+        navbar: 0,
+        toolbar: {
+          prev: true,
+          zoomIn: true,
+          reset: true,
+          zoomOut: true,
+          rotateLeft: true,
+          rotateRight: true,
+          next: true
+        }
+      })
+    })
   },
   methods: {
     getInfoData () {
-      this.axios.get('/api/GET/infos/', {
+      this.$axios.get(`/api/videos/${this.designation}/details/`, {
         params: {
           designation: this.designation
         }
       })
         .then(response => {
-          this.magnetTableData = response.data.magnetTableData
-          this.urlList = response.data.urlList
+          // noinspection JSUnresolvedVariable
+          this.magnets = response.data.mi
+          this.samples = response.data.sl
+          this.$nextTick(() => {
+            this.viewer.update()
+          })
         })
     },
     magnetDblclick (row) {
@@ -101,5 +123,5 @@ export default {
 </script>
 
 <style scoped>
-  @import "Info.css";
+  @import "Detail.css";
 </style>

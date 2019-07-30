@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <keep-alive include="List">
-      <router-view></router-view>
+      <router-view/>
     </keep-alive>
   </div>
 </template>
@@ -13,7 +13,8 @@ export default {
     window.onresize = () => {
       return this.$store.dispatch('handleIsPC', `${document.documentElement.clientWidth}` >= 768)
     }
-    return this.$store.dispatch('handleIsPC', `${document.documentElement.clientWidth}` >= 768)
+    this.$store.dispatch('handleIsPC', `${document.documentElement.clientWidth}` >= 768)
+      .then()
   }
 }
 </script>

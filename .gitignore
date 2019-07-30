@@ -4,7 +4,6 @@ node_modules
 /images
 /data
 __pycache__
-Jav_Bus.db
 
 # local env files
 .env.local

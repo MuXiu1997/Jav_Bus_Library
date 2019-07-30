@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import List from './views/List'
 
 Vue.use(Router)
 
@@ -11,13 +10,13 @@ export default new Router({
     {
       path: '/',
       name: 'list',
-      component: List
+      component: () => import(/* webpackChunkName: "list" */'./views/List.vue')
     },
     {
-      path: '/info/:id',
+      path: '/:id',
       props: true,
-      name: 'info',
-      component: () => import(/* webpackChunkName: "Info" */'./views/Info.vue')
+      name: 'detail',
+      component: () => import(/* webpackChunkName: "detail" */'./views/Detail.vue')
     }
   ]
 })
