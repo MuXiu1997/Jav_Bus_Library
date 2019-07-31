@@ -6,7 +6,7 @@
 
 前端：Vue + element-ui + bootstrap-vue
 
-后端：flask + uwsgi +nginx
+后端：flask + gunicorn + nginx
 
 爬虫：scrapy
 
