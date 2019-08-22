@@ -17,7 +17,8 @@
 #### 网站服务器
 
 ```bash
-$ python /JBL/run_server.py
+$ python /JBL/docker_manage/manage.py 
+$ 1
 ```
 
 #### 爬虫
@@ -25,7 +26,8 @@ $ python /JBL/run_server.py
 启动容器：
 
 ```bash
-$ python /JBL/run_scrapy_docker.py
+$ python /JBL/docker_manage/manage.py 
+$ 2
 ```
 
 在容器内运行爬虫：
