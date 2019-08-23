@@ -4,13 +4,13 @@
 
 练手项目
 
-前端：Vue + element-ui + bootstrap-vue
+前端：Vue + element-ui + bootstrap-vue + nginx
 
-后端：flask + gunicorn + nginx
+后端：Gin + nginx
 
-爬虫：scrapy
+爬虫：Scrapy
 
-数据库：redis
+数据库：Redis
 
 ### 启动
 

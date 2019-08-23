@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="huidingbu" unicode="&#59025;" d="M153.979 721.996h718.833c16.142 0 29.127 12.986 29.127 29.127s-12.986 29.127-29.127 29.127h-718.833c-16.142 0-29.127-12.986-29.127-29.127s12.986-29.127 29.127-29.127zM533.845 649.299c-11.408 11.408-29.855 11.408-41.142 0l-351.952-351.952c-11.408-11.408-11.408-29.855 0-41.142 5.703-5.703 13.107-8.496 20.631-8.496s14.928 2.791 20.631 8.496l302.194 302.194v-542.614c0-16.142 12.986-29.127 29.127-29.127s29.127 12.986 29.127 29.127v542.614l302.194-302.194c5.703-5.703 13.107-8.496 20.631-8.496s14.928 2.791 20.631 8.496c11.408 11.408 11.408 29.855 0 41.142l-352.074 351.952z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

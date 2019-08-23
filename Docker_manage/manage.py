@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from container import jbl_redis, jbl_flask_gunicorn, jbl_nginx, jbl_scrapy
+from container import jbl_redis, jbl_gin, jbl_nginx, jbl_scrapy
 
 
 def run_server():
     jbl_redis.rerun()
-    jbl_flask_gunicorn.rerun()
+    jbl_gin.rerun()
     jbl_nginx.rerun()
 
 
