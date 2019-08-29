@@ -85,7 +85,7 @@ func putVideo(c *gin.Context) {
 	conn := RDB.Conn()
 	defer conn.Close()
 
-	key := fmt.Sprintf("d_%s", designation)
+	key := fmt.Sprintf("l_%s", designation)
 	err = conn.HSet(key, "il", video.IsLike).Err()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
